@@ -28,28 +28,28 @@ yi = 10
 
 l = (x1,y1,x2,y2) ->
 	strokeWeight 1
-	line X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
+	line X + S*x1, Y + S*y1, X + S*x2, Y + S*y2
 
 l3 = (x1,y1,x2,y2) ->
 	strokeWeight 3
-	line X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
+	line X + S*x1, Y + S*y1, X + S*x2, Y + S*y2
 
 r = (x1,y1,x2,y2) ->
 	strokeWeight 1
-	rect X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
+	rect X + S*x1, Y + S*y1, X + S*x2, Y + S*y2
 
 vertical = (x,y) ->
-	r x-3, y,   x+3, y+5
-	l x,   y+5, x,   y+38
-	r x-3, y+38,x+3, y+44
+	r x - 3, y,      x + 3, y + 5
+	l x,     y + 5,  x,     y+38
+	r x - 3, y + 38, x + 3, y+44
 
 	for i in range 11
-		l x-8, 7.5+i*3,   x-5.5, 9+i*3
-		l x-8, 7.5+i*3,   x-5.5, 6+i*3
+		l x - 8, 7.5 + i*3,   x - 5.5, 9 + i*3
+		l x - 8, 7.5 + i*3,   x - 5.5, 6 + i*3
 
 	for i in range 11
-		l x+8, 7.5+i*3, x+5.5, 9+i*3
-		l x+8, 7.5+i*3, x+5.5, 6+i*3
+		l x + 8, 7.5 + i*3, x + 5.5, 9 + i*3
+		l x + 8, 7.5 + i*3, x + 5.5, 6 + i*3
 
 setup = ->
 	createCanvas 1200,700
@@ -68,10 +68,10 @@ draw_z = ->
 	vertical xg,ya
 
 horizontal = (x,y) ->
-	r x-2.7,yf, x+2.7,yg
-	l3 x,y, x-7.5,yi
-	l3 x,y, x+7.5,yi
-	l3 x-4.5,yh+0.2, x+4.5,yh+0.2
+	r x - 2.7, yf, x + 2.7, yg
+	l3 x, y, x - 7.5, yi
+	l3 x, y, x + 7.5, yi
+	l3 x - 4.5, yh + 0.2, x + 4.5, yh + 0.2
 
 draw_y = ->
 	X = 20
@@ -86,24 +86,24 @@ draw_y = ->
 
 draw_x = ->
 	X = 100
-	Y = ya+20
+	Y = ya + 20
 
-	l3 xz+5,ya, xz+5,yb
-	l3 xz+5,yc, xz+5,yd
+	l3 xz + 5, ya, xz + 5, yb
+	l3 xz + 5, yc, xz + 5, yd
 
-	r xz+3,ya, xz+4,yb
-	r xz+3,yc, xz+4,yd
+	r xz + 3, ya, xz + 4, yb
+	r xz + 3, yc, xz + 4, yd
 
-	r xz+4,ya, xz+5,yb
-	r xz+4,yc, xz+5,yd
+	r xz + 4, ya, xz + 5, yb
+	r xz + 4, yc, xz + 5, yd
 
-	l xz,yb, xz+7,yb
-	l xz,yc, xz+7,yc
-	l xz,yb, xz,  yc
+	l xz, yb, xz + 7, yb
+	l xz, yc, xz + 7, yc
+	l xz, yb, xz,     yc
 
 	for i in range 11
-		l xz+9, 7.5+i*3, xz+7, 9+i*3
-		l xz+9, 7.5+i*3, xz+7, 6+i*3
+		l xz + 9, 7.5 + i*3, xz + 7, 9 + i*3
+		l xz + 9, 7.5 + i*3, xz + 7, 6 + i*3
 
 draw = ->
 	background 255
