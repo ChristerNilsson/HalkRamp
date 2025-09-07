@@ -69,7 +69,6 @@ horizontal = (x,y) ->
 	l x,y, x+7.5,yi
 	l x-4.5,yh+0.2, x+4.5,yh+0.2
 	pop()
-	# r x-4.2, yh, x+4.2, yh+1
 
 draw_y = ->
 	X = 20
@@ -87,13 +86,12 @@ draw_x = ->
 	strokeWeight 3
 	l xz+5,ya, xz+5,yb
 	l xz+5,yc, xz+5,yd
-	#l xz+3,ya, xz+3,yb
-	#l xz+3,yc, xz+3,yd
 	pop()
-	r xz+3,ya, xz+4,yb
-	r xz+4,ya, xz+5,yb
 
+	r xz+3,ya, xz+4,yb
 	r xz+3,yc, xz+4,yd
+
+	r xz+4,ya, xz+5,yb
 	r xz+4,yc, xz+5,yd
 
 	l xz,yb, xz+7,yb
