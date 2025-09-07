@@ -27,9 +27,15 @@ yh = 6
 yi = 10
 
 l = (x1,y1,x2,y2) ->
+	strokeWeight 1
+	line X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
+
+l3 = (x1,y1,x2,y2) ->
+	strokeWeight 3
 	line X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
 
 r = (x1,y1,x2,y2) ->
+	strokeWeight 1
 	rect X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
 
 vertical = (x,y) ->
@@ -47,7 +53,7 @@ vertical = (x,y) ->
 
 setup = ->
 	createCanvas 1200,700
-	strokeWeight 1
+	strokeWeight 0.5
 	noFill()
 	rectMode CORNERS
 
@@ -63,30 +69,27 @@ draw_z = ->
 
 horizontal = (x,y) ->
 	r x-2.7,yf, x+2.7,yg
-	push()
-	strokeWeight 3
-	l x,y, x-7.5,yi
-	l x,y, x+7.5,yi
-	l x-4.5,yh+0.2, x+4.5,yh+0.2
-	pop()
+	l3 x,y, x-7.5,yi
+	l3 x,y, x+7.5,yi
+	l3 x-4.5,yh+0.2, x+4.5,yh+0.2
 
 draw_y = ->
 	X = 20
 	Y = 550
-	r xa,yg,xz,yh
 	horizontal xd,ye
 	horizontal xf,ye
 	horizontal xg,ye
+	push()
+	fill 'white'
+	r xa,yg,xz,yh
+	pop()
 
 draw_x = ->
 	X = 100
 	Y = ya+20
 
-	push()
-	strokeWeight 3
-	l xz+5,ya, xz+5,yb
-	l xz+5,yc, xz+5,yd
-	pop()
+	l3 xz+5,ya, xz+5,yb
+	l3 xz+5,yc, xz+5,yd
 
 	r xz+3,ya, xz+4,yb
 	r xz+3,yc, xz+4,yd
@@ -108,3 +111,9 @@ draw = ->
 	draw_z()
 	draw_y()
 	draw_x()
+
+	push()
+	fill 'black'
+	textSize 20
+	text '1.0', S*(xz+13), 550 + S*yg
+	pop()
