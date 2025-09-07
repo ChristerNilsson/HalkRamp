@@ -1,7 +1,7 @@
 echo = console.log
 range = _.range
 
-S = 10
+S = 12
 X = 0
 Y = 0
 
@@ -38,21 +38,21 @@ r = (x1,y1,x2,y2) ->
 	strokeWeight 1
 	rect X + S*x1, Y + S*y1, X + S*x2, Y + S*y2
 
+zickzack = (x0, x1) ->
+	for i in range 11
+		l x0, 7.5 + i*3, x1, 9 + i*3
+		l x0, 7.5 + i*3, x1, 6 + i*3
+
 vertical = (x,y) ->
 	r x - 3, y,      x + 3, y + 5
-	l x,     y + 5,  x,     y+38
-	r x - 3, y + 38, x + 3, y+44
+	l x,     y + 5,  x,     y + 38
+	r x - 3, y + 38, x + 3, y + 44
 
-	for i in range 11
-		l x - 8, 7.5 + i*3,   x - 5.5, 9 + i*3
-		l x - 8, 7.5 + i*3,   x - 5.5, 6 + i*3
-
-	for i in range 11
-		l x + 8, 7.5 + i*3, x + 5.5, 9 + i*3
-		l x + 8, 7.5 + i*3, x + 5.5, 6 + i*3
+	zickzack x - 8, x - 6
+	zickzack x + 8, x + 6
 
 setup = ->
-	createCanvas 1200,700
+	createCanvas 1800,850
 	strokeWeight 0.5
 	noFill()
 	rectMode CORNERS
@@ -75,7 +75,7 @@ horizontal = (x,y) ->
 
 draw_y = ->
 	X = 20
-	Y = 550
+	Y = 700
 	horizontal xd,ye
 	horizontal xf,ye
 	horizontal xg,ye
@@ -101,12 +101,10 @@ draw_x = ->
 	l xz, yc, xz + 7, yc
 	l xz, yb, xz,     yc
 
-	for i in range 11
-		l xz + 9, 7.5 + i*3, xz + 7, 9 + i*3
-		l xz + 9, 7.5 + i*3, xz + 7, 6 + i*3
+	zickzack xz + 9, xz + 7
 
 draw = ->
-	background 255
+	background 'white'
 
 	draw_z()
 	draw_y()
@@ -115,5 +113,5 @@ draw = ->
 	push()
 	fill 'black'
 	textSize 20
-	text '1.0', S*(xz+13), 550 + S*yg
+	text '1.1', S*(xz + 13), 700 + S*yg
 	pop()
