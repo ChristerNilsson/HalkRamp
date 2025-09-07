@@ -33,17 +33,17 @@ r = (x1,y1,x2,y2) ->
 	rect X+S*x1, Y+S*y1, X+S*x2, Y+S*y2
 
 vertical = (x,y) ->
-	r x-3,y,   x+3,y+5
-	l x,    y+5, x,    y+38
-	r x-3,y+38,x+3,y+44
+	r x-3, y,   x+3, y+5
+	l x,   y+5, x,   y+38
+	r x-3, y+38,x+3, y+44
 
 	for i in range 11
-		l x-10+2,9+i*3-1.5,   x-7.5+2,10.5+i*3-1.5
-		l x-10+2,9+i*3-1.5,   x-7.5+2, 7.5+i*3-1.5
+		l x-8, 7.5+i*3,   x-5.5, 9+i*3
+		l x-8, 7.5+i*3,   x-5.5, 6+i*3
 
 	for i in range 11
-		l x+10-2, 9+i*3-1.5, x+7.5-2, 10.5+i*3-1.5
-		l x+10-2, 9+i*3-1.5, x+7.5-2,  7.5+i*3-1.5
+		l x+8, 7.5+i*3, x+5.5, 9+i*3
+		l x+8, 7.5+i*3, x+5.5, 6+i*3
 
 setup = ->
 	createCanvas 1200,700
@@ -62,12 +62,14 @@ draw_z = ->
 	vertical xg,ya
 
 horizontal = (x,y) ->
-	r x-3,yf, x+3,yg
+	r x-2.7,yf, x+2.7,yg
 	push()
 	strokeWeight 3
 	l x,y, x-7.5,yi
 	l x,y, x+7.5,yi
+	l x-4.5,yh+0.2, x+4.5,yh+0.2
 	pop()
+	# r x-4.2, yh, x+4.2, yh+1
 
 draw_y = ->
 	X = 20
@@ -80,18 +82,27 @@ draw_y = ->
 draw_x = ->
 	X = 100
 	Y = ya+20
-	r xz+3,ya,xz+4,yb
-	r xz+4,ya,xz+5,yb
-	r xz+3,yc,xz+4,yd
-	r xz+4,yc,xz+5,yd
 
-	l xz,yb,xz+10-3,yb
-	l xz,yc,xz+10-3,yc
-	l xz,yb,xz,yc
+	push()
+	strokeWeight 3
+	l xz+5,ya, xz+5,yb
+	l xz+5,yc, xz+5,yd
+	#l xz+3,ya, xz+3,yb
+	#l xz+3,yc, xz+3,yd
+	pop()
+	r xz+3,ya, xz+4,yb
+	r xz+4,ya, xz+5,yb
+
+	r xz+3,yc, xz+4,yd
+	r xz+4,yc, xz+5,yd
+
+	l xz,yb, xz+7,yb
+	l xz,yc, xz+7,yc
+	l xz,yb, xz,  yc
 
 	for i in range 11
-		l xz+12-3, 9+i*3-1.5,   xz+10-3, 10.5+i*3-1.5
-		l xz+12-3, 9+i*3-1.5,   xz+10-3,  7.5+i*3-1.5
+		l xz+9, 7.5+i*3, xz+7, 9+i*3
+		l xz+9, 7.5+i*3, xz+7, 6+i*3
 
 draw = ->
 	background 255
